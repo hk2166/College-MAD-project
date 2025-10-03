@@ -17,7 +17,7 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { useAppState } from '@/context/app-provider';
 import { generateRecipeFromIngredients } from '@/ai/flows/generate-recipe-from-ingredients';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Sparkles } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
@@ -48,13 +48,14 @@ export function GenerateRecipeForm() {
   });
 
   // Effect to update form values when pantryItems changes
-  useState(() => {
+  useEffect(() => {
+    const newDefaultIngredients = pantryItems.map((item) => item.name).join(', ');
     form.reset({
-      ingredients: defaultIngredients,
+      ingredients: newDefaultIngredients,
       dietaryRestrictions: form.getValues().dietaryRestrictions || '',
       cuisinePreferences: form.getValues().cuisinePreferences || '',
     });
-  });
+  }, [pantryItems, form]);
 
   async function onSubmit(values: FormValues) {
     setIsLoading(true);

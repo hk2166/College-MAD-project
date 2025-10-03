@@ -30,7 +30,7 @@ export function PantryManager() {
         <Button type="submit" size="icon">
           <Plus />
           <span className="sr-only">Add Item</span>
-        </Button>ja
+        </Button>
       </form>
 
       {pantryItems.length > 0 ? (
