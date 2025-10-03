@@ -1,50 +1,81 @@
-# Welcome to your Expo app 👋
+# 🍳 Cooking Assistant
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+An AI-powered cooking companion built with React Native and Expo, featuring voice recognition and Google Gemini AI integration.
 
-## Get started
+## ✨ Features
 
-1. Install dependencies
+- **Voice Recognition**: Speak naturally to get cooking help
+- **AI-Powered Responses**: Powered by Google Gemini for intelligent cooking advice
+- **Text-to-Speech**: Hear responses read aloud
+- **Modern UI**: Beautiful, intuitive interface with smooth animations
+- **Cross-Platform**: Works on iOS, Android, and Web
 
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Node.js (v18 or later)
+- Expo CLI
+- iOS Simulator (for iOS development) or Android Studio (for Android development)
+
+### Installation
+
+1. Clone the repository
+2. Install dependencies:
    ```bash
    npm install
    ```
 
-2. Start the app
+3. Set up environment variables:
+   Create a `.env` file in the root directory:
+   ```
+   EXPO_PUBLIC_GEMINI_API_KEY=your_gemini_api_key_here
+   ```
+   
+   Get your Gemini API key from: https://makersuite.google.com/app/apikey
 
+4. Start the development server:
    ```bash
-   npx expo start
+   npm start
    ```
 
-In the output, you'll find options to open the app in a
+5. Run on your preferred platform:
+   - Press `i` for iOS Simulator
+   - Press `a` for Android Emulator
+   - Press `w` for Web browser
+   - Scan QR code with Expo Go app on your phone
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+## 🎨 UI Improvements Made
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+- **Modern Design System**: Consistent colors, spacing, and typography
+- **Enhanced Navigation**: Better tab icons and styling
+- **Improved Voice Assistant**: Better error handling and visual feedback
+- **Feature Cards**: Interactive cards showcasing app capabilities
+- **Responsive Layout**: Works well on different screen sizes
+- **Dark Mode Support**: Automatic theme switching based on system preferences
 
-## Get a fresh project
+## 🛠 Technical Improvements
 
-When you're ready, run:
+- **TypeScript Migration**: Converted JavaScript files to TypeScript for better type safety
+- **Error Handling**: Comprehensive error handling for voice recognition and API calls
+- **Performance**: Optimized components and reduced re-renders
+- **Accessibility**: Better accessibility support with proper labels and contrast
+- **Code Organization**: Cleaner file structure and component organization
 
-```bash
-npm run reset-project
-```
+## 📱 Screens
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+- **Home**: Main interface with voice assistant and feature overview
+- **Explore**: Quick actions and helpful resources
+- **Modal**: About screen with app information
 
-## Learn more
+## 🔧 Configuration
 
-To learn more about developing your project with Expo, look at the following resources:
+The app uses Expo Router for navigation and includes:
+- Voice recognition via `@react-native-voice/voice`
+- Text-to-speech via `react-native-tts`
+- AI responses via Google Gemini API
+- Modern UI components with Expo Vector Icons
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+## 📄 License
 
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+This project is open source and available under the MIT License.
