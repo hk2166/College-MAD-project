@@ -8,7 +8,7 @@
  */
 
 import {ai} from '@/ai/genkit';
-import {z} from 'genkit';
+import {z} from 'zod';
 
 const VoiceCommandInputSchema = z.object({
   command: z.string().describe('The voice command issued by the user.'),
