@@ -1,31 +1,18 @@
-import React, { createContext, useContext, useEffect, useState, ReactNode } from 'react';
+import React, { createContext, useContext, useEffect, useState } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { Recipe, PantryItem } from '../types';
 
-interface AppContextType {
-  pantryItems: PantryItem[];
-  addPantryItem: (name: string) => void;
-  removePantryItem: (id: string) => void;
-  savedRecipes: Recipe[];
-  isRecipeSaved: (id: string) => boolean;
-  saveRecipe: (recipe: Recipe) => void;
-  unsaveRecipe: (id: string) => void;
-  currentRecipe: Recipe | null;
-  setCurrentRecipe: (recipe: Recipe | null) => void;
-  viewSavedRecipe: (recipe: Recipe) => void;
-}
 
-const AppContext = createContext<AppContextType | undefined>(undefined);
+const AppContext = createContext(undefined);
 
 const STORAGE_KEYS = {
   PANTRY: 'culinary-copilot-pantry',
   SAVED_RECIPES: 'culinary-copilot-saved-recipes',
 };
 
-export function AppProvider({ children }: { children: ReactNode }) {
-  const [pantryItems, setPantryItems] = useState<PantryItem[]>([]);
-  const [savedRecipes, setSavedRecipes] = useState<Recipe[]>([]);
-  const [currentRecipe, setCurrentRecipe] = useState<Recipe | null>(null);
+export function AppProvider({ children }) {
+  const [pantryItems, setPantryItems] = useState([]);
+  const [savedRecipes, setSavedRecipes] = useState([]);
+  const [currentRecipe, setCurrentRecipe] = useState(null);
   const [isInitialized, setIsInitialized] = useState(false);
 
   useEffect(() => {
@@ -77,31 +64,31 @@ export function AppProvider({ children }: { children: ReactNode }) {
     }
   };
 
-  const addPantryItem = (name: string) => {
+  const addPantryItem = (name) => {
     if (name && !pantryItems.some((item) => item.name.toLowerCase() === name.toLowerCase())) {
       setPantryItems((prev) => [...prev, { id: Math.random().toString(36).substr(2, 9), name }]);
     }
   };
 
-  const removePantryItem = (id: string) => {
+  const removePantryItem = (id) => {
     setPantryItems((prev) => prev.filter((item) => item.id !== id));
   };
 
-  const isRecipeSaved = (id: string) => {
+  const isRecipeSaved = (id) => {
     return savedRecipes.some((recipe) => recipe.id === id);
   };
 
-  const saveRecipe = (recipe: Recipe) => {
+  const saveRecipe = (recipe) => {
     if (!isRecipeSaved(recipe.id)) {
       setSavedRecipes((prev) => [...prev, recipe]);
     }
   };
 
-  const unsaveRecipe = (id: string) => {
+  const unsaveRecipe = (id) => {
     setSavedRecipes((prev) => prev.filter((recipe) => recipe.id !== id));
   };
 
-  const viewSavedRecipe = (recipe: Recipe) => {
+  const viewSavedRecipe = (recipe) => {
     setCurrentRecipe(recipe);
   };
 

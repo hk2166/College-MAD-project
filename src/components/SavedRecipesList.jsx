@@ -17,12 +17,12 @@ export default function SavedRecipesList() {
   const { savedRecipes, viewSavedRecipe, unsaveRecipe } = useAppState();
   const navigation = useNavigation();
 
-  const handleViewRecipe = (recipe: Recipe) => {
+  const handleViewRecipe = (recipe) => {
     viewSavedRecipe(recipe);
     navigation.navigate('Main', { screen: 'Home' });
   };
 
-  const handleDeleteRecipe = (recipe: Recipe) => {
+  const handleDeleteRecipe = (recipe) => {
     Alert.alert(
       'Delete Recipe',
       `Are you sure you want to remove "${recipe.recipeName}" from your saved recipes?`,
